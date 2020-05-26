@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Project's Upvote</title>
+    <!-- stylesheets -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- auth models -->
+    <div class="auth open">
+        <div class="modal active">
+            <h2>SignIn</h2>
+            <form class="login">
+                <input type="text" name="email" placeholder="Email">
+                <input type="password" name="password" placeholder="Password">
+                <button>SignIn</button>
+                <p class="error"></p>
+            </form>
+            <div>Don't have an account? <a class="switch">SignUp instead</a></div>
+        </div>
+        <!-- signup modal -->
+        <div class="modal">
+            <h2>SignUp</h2>
+            <form class="register">
+                <input type="text" name="email" placeholder="Email">
+                <input type="password" name="password" placeholder="Password">
+                <button>SignUp</button>
+                <p class="error"></p>
+            </form>
+            <div>Got an account? <a class="switch">SignIn instead</a></div>
+        </div>
+    </div>
+
+    <!-- new project request modal -->
+    <div class="new-request">
+        <div class="modal">
+            <h2>Request a Project</h2>
+            <form>
+                <input type="text" name="request" placeholder="Request...">
+                <button>Submit Request</button>
+                <p class="error"></p>
+            </form>
+        </div>
+    </div>
+
+    <header>
+        <nav>
+            <a class="add-request">add request</a>
+            <a class="sign-out">sign out</a>
+        </nav>
+    </header>
+
+    <section class="content">
+        <h1>Projects Requests</h1>
+        <ul class="request-list">
+            <li>
+                <span class="text">Laravel 6 tutorial</span>
+                <div>
+                    <span class="votes">125</span>
+                    <i class="material-icons upvote">arrow_upward</i>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/7.14.5/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/7.14.5/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.14.5/firebase-functions.js"></script>
+    <script defer src="/__/firebase/7.14.5/firebase-firestore.js"></script>
+    <script defer src="/__/firebase/7.14.5/firebase-database.js"></script>
+    <script defer src="/__/firebase/7.14.5/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/7.14.5/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+    <script defer src="js/app.js"></script>
+    <script defer src="js/auth.js"></script>
+    <script defer src="js/requests.js"></script>
+</body>
+
+</html>
