@@ -7,7 +7,7 @@ exports.new_user_signup = functions.auth.user().onCreate(user => {
     // for background triggers you must return a value/promise
     return admin.firestore().collection('users').doc(user.uid).set({
         email: user.email,
-        upvotedOn: []
+        upvotedOn: [],
     });
 });
 
@@ -35,5 +35,35 @@ exports.add_project_request = functions.https.onCall((data, context) => {
     return admin.firestore().collection('requests').add({
         text: data.text,
         upvotes: 0
+    });
+});
+
+// upvote a callable function
+exports.upvote = functions.https.onCall(async(data, context) => {
+    // check auth state
+    if (!context.auth) {
+        throw new functions.https.HttpsError(
+            'unauthenticated',
+            'only authenticated users can vote up requests'
+        );
+    }
+    // get reference for user doc & request doc
+    const user = admin.firestore().collection('users').doc(context.auth.uid);
+    const request = admin.firestore().collection('requests').doc(data.id);
+
+    const doc = await user.get();
+    // check the user hasn't already upvoted
+    if (doc.data().upvotedOn.includes(data.id)) {
+        throw new functions.https.HttpsError(
+            'failed-precondition',
+            'You can only upvote for a project once'
+        );
+    }
+    await user.update({
+        upvotedOn: [...doc.data().upvotedOn, data.id]
+    });
+    // update the votes on the request
+    return request.update({
+        upvotes: admin.firestore.FieldValue.increment(1)
     });
 });
