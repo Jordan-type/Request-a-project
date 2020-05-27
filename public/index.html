@@ -55,13 +55,13 @@
         </nav>
     </header>
 
-    <section class="content">
+    <section class="content" id="app">
         <h1>Projects Requests</h1>
         <ul class="request-list">
-            <li>
-                <span class="text">Laravel 6 tutorial</span>
+            <li v-for="request in requests">
+                <span class="text">{{request.text}}</span>
                 <div>
-                    <span class="votes">125</span>
+                    <span class="votes">{{request.upvotes}}</span>
                     <i class="material-icons upvote">arrow_upward</i>
                 </div>
             </li>
@@ -69,6 +69,8 @@
     </section>
 
 
+    <!-- vue js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/7.14.5/firebase-app.js"></script>
