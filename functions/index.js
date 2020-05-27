@@ -56,7 +56,7 @@ exports.upvote = functions.https.onCall(async(data, context) => {
     if (doc.data().upvotedOn.includes(data.id)) {
         throw new functions.https.HttpsError(
             'failed-precondition',
-            'You can only upvote for a project once'
+            'You can only upvote a project once'
         );
     }
     await user.update({

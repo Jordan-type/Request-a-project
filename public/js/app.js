@@ -29,3 +29,15 @@ request_form.addEventListener('submit', (e) => {
         request_form.querySelector('.error').textContent = error.message;
     });
 });
+
+// notification
+const notification = document.querySelector('.notification');
+
+const show_notification = (message) => {
+    notification.textContent = message;
+    notification.classList.add('active');
+    setTimeout(() => {
+        notification.classList.remove('active');
+        notification.textContent = '';
+    }, 4000); // 4 seconds
+};
