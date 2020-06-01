@@ -16,7 +16,7 @@
 
     <!-- auth models -->
     <div class="auth open">
-        <div class="modal active">
+        <div class="modal">
             <h2>SignIn</h2>
             <form class="login">
                 <input type="text" name="email" placeholder="Email">
@@ -62,10 +62,12 @@
         <h1>Projects Requests</h1>
         <ul class="request-list">
             <li v-for="request in requests">
+                <!-- <img class="" src="/public/images/project_request_banner.png" alt="Teams Image" style="width:500px;height:600px;"> -->
                 <span class="text">{{request.text}}</span>
                 <div>
                     <span class="votes">{{request.upvotes}}</span>
                     <i class="material-icons upvote" v-on:click="upvoteRequest(request.id)">arrow_upward</i>
+                    <i class="material-icons">delete</i>
                 </div>
             </li>
         </ul>
@@ -86,6 +88,7 @@
     <script defer src="/__/firebase/7.14.5/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
+
     <script defer src="js/app.js"></script>
     <script defer src="js/auth.js"></script>
     <script defer src="js/requests.js"></script>

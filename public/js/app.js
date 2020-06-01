@@ -39,5 +39,5 @@ const show_notification = (message) => {
     setTimeout(() => {
         notification.classList.remove('active');
         notification.textContent = '';
-    }, 4000); // 4 seconds
+    }, 5000); // 5 seconds
 };

@@ -13,7 +13,7 @@ var app = new Vue({
         }
     },
     mounted() {
-        const ref = firebase.firestore().collection('requests');
+        const ref = firebase.firestore().collection('requests').orderBy('upvotes', 'desc');
 
         ref.onSnapshot(snapshot => {
             let requests = [];
